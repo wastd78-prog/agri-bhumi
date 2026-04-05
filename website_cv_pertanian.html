@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CV AgriBumi Nusantara - Mitra Tani Profesional</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --hijau: #1A5C1A;
+    --hijau-mid: #2D8A2D;
+    --hijau-muda: #5CB85C;
+    --krem: #F7F3ED;
+    --tanah: #8B5E3C;
+    --kuning: #D4A017;
+    --putih: #FFFFFF;
+    --abu: #6B6B6B;
+    --gelap: #111B0E;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--krem); color: var(--gelap); overflow-x: hidden; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    background: rgba(26,92,26,0.96); backdrop-filter: blur(8px);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 5%; height: 68px;
+  }
+  .nav-logo { font-family: 'Playfair Display', serif; color: #fff; font-size: 1.4rem; font-weight: 700; text-decoration: none; }
+  .nav-logo span { color: var(--kuning); }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { color: rgba(255,255,255,0.85); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--kuning); }
+  .nav-cta { background: var(--kuning); color: var(--gelap); padding: 0.5rem 1.2rem; border-radius: 4px; font-weight: 600; font-size: 0.85rem; text-decoration: none; transition: opacity 0.2s; }
+  .nav-cta:hover { opacity: 0.88; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh; display: flex; align-items: center;
+    background: linear-gradient(135deg, #0E3B0E 0%, #1A5C1A 60%, #2D8A2D 100%);
+    position: relative; overflow: hidden; padding: 0 5%;
+  }
+  .hero::before {
+    content: ''; position: absolute; inset: 0;
+    background-image: radial-gradient(circle at 70% 50%, rgba(212,160,23,0.12) 0%, transparent 60%),
+      repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(255,255,255,0.02) 40px, rgba(255,255,255,0.02) 41px);
+  }
+  .hero-content { position: relative; z-index: 1; max-width: 640px; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: rgba(212,160,23,0.18); border: 1px solid rgba(212,160,23,0.4);
+    color: var(--kuning); padding: 0.35rem 1rem; border-radius: 20px;
+    font-size: 0.8rem; font-weight: 500; letter-spacing: 0.05em;
+    margin-bottom: 1.5rem; animation: fadeUp 0.6s ease both;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.4rem, 5vw, 4rem);
+    color: #fff; line-height: 1.15; font-weight: 700;
+    animation: fadeUp 0.6s ease 0.1s both;
+  }
+  .hero h1 em { color: var(--kuning); font-style: normal; }
+  .hero-sub {
+    color: rgba(255,255,255,0.75); font-size: 1.1rem; line-height: 1.7;
+    margin: 1.5rem 0 2.5rem; animation: fadeUp 0.6s ease 0.2s both;
+  }
+  .hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; animation: fadeUp 0.6s ease 0.3s both; }
+  .btn-primary { background: var(--kuning); color: var(--gelap); padding: 0.85rem 2rem; border-radius: 5px; font-weight: 600; text-decoration: none; font-size: 0.95rem; transition: transform 0.2s; }
+  .btn-primary:hover { transform: translateY(-2px); }
+  .btn-outline { border: 1.5px solid rgba(255,255,255,0.5); color: #fff; padding: 0.85rem 2rem; border-radius: 5px; font-weight: 500; text-decoration: none; font-size: 0.95rem; transition: all 0.2s; }
+  .btn-outline:hover { border-color: #fff; background: rgba(255,255,255,0.08); }
+
+  .hero-stats {
+    position: absolute; right: 5%; bottom: 10%; z-index: 1;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
+    background: rgba(255,255,255,0.1); border-radius: 12px; overflow: hidden;
+    animation: fadeUp 0.6s ease 0.4s both;
+  }
+  .stat-box { background: rgba(255,255,255,0.05); padding: 1.5rem; text-align: center; }
+  .stat-box:hover { background: rgba(255,255,255,0.1); }
+  .stat-num { font-family: 'Playfair Display', serif; font-size: 2.2rem; color: var(--kuning); font-weight: 700; line-height: 1; }
+  .stat-lbl { color: rgba(255,255,255,0.65); font-size: 0.78rem; margin-top: 4px; }
+
+  /* SECTIONS */
+  section { padding: 6rem 5%; }
+  .section-label { color: var(--hijau-mid); font-size: 0.8rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.75rem; }
+  .section-title { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 3vw, 2.8rem); line-height: 1.2; margin-bottom: 1rem; }
+  .section-sub { color: var(--abu); font-size: 1rem; line-height: 1.7; max-width: 560px; }
+
+  /* LAYANAN */
+  .layanan { background: #fff; }
+  .layanan-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5px; background: #e8e8e8; border: 1.5px solid #e8e8e8; border-radius: 12px; overflow: hidden; margin-top: 3.5rem; }
+  .layanan-card { background: #fff; padding: 2.5rem 2rem; transition: background 0.25s; }
+  .layanan-card:hover { background: var(--krem); }
+  .layanan-icon { font-size: 2rem; margin-bottom: 1rem; }
+  .layanan-card h3 { font-family: 'Playfair Display', serif; font-size: 1.2rem; margin-bottom: 0.75rem; color: var(--hijau); }
+  .layanan-card p { color: var(--abu); font-size: 0.9rem; line-height: 1.65; }
+
+  /* PRODUK */
+  .produk { background: var(--krem); }
+  .produk-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3rem; flex-wrap: wrap; gap: 1rem; }
+  .produk-tabs { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+  .tab-btn { padding: 0.5rem 1.2rem; border-radius: 20px; border: 1.5px solid #ccc; background: transparent; cursor: pointer; font-size: 0.85rem; font-family: 'DM Sans', sans-serif; transition: all 0.2s; color: var(--abu); }
+  .tab-btn.active, .tab-btn:hover { border-color: var(--hijau); background: var(--hijau); color: #fff; }
+  .produk-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1.25rem; }
+  .produk-card {
+    background: #fff; border-radius: 10px; overflow: hidden;
+    border: 1px solid #e8e8e8; transition: transform 0.25s, box-shadow 0.25s;
+  }
+  .produk-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(26,92,26,0.12); }
+  .produk-img { height: 140px; display: flex; align-items: center; justify-content: center; font-size: 3.5rem; }
+  .produk-body { padding: 1rem 1.25rem 1.5rem; }
+  .produk-category { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--hijau-mid); margin-bottom: 4px; }
+  .produk-name { font-weight: 600; font-size: 0.95rem; margin-bottom: 0.25rem; }
+  .produk-price { color: var(--hijau); font-weight: 600; font-size: 0.9rem; }
+  .produk-unit { color: var(--abu); font-size: 0.75rem; }
+  .produk-btn { display: block; margin-top: 0.75rem; text-align: center; padding: 0.5rem; border: 1.5px solid var(--hijau); border-radius: 5px; color: var(--hijau); font-size: 0.82rem; font-weight: 500; text-decoration: none; transition: all 0.2s; cursor: pointer; background: transparent; width: 100%; font-family: 'DM Sans', sans-serif; }
+  .produk-btn:hover { background: var(--hijau); color: #fff; }
+
+  /* MITRA / PETANI */
+  .mitra { background: #fff; }
+  .mitra-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin-top: 3.5rem; position: relative; }
+  .mitra-steps::before {
+    content: ''; position: absolute; top: 28px; left: 10%; right: 10%; height: 2px;
+    background: repeating-linear-gradient(90deg, var(--hijau-muda) 0, var(--hijau-muda) 12px, transparent 12px, transparent 20px);
+    z-index: 0;
+  }
+  .step { text-align: center; position: relative; z-index: 1; }
+  .step-num { width: 56px; height: 56px; border-radius: 50%; background: var(--hijau); color: #fff; font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; }
+  .step h4 { font-weight: 600; font-size: 0.95rem; margin-bottom: 0.4rem; }
+  .step p { color: var(--abu); font-size: 0.82rem; line-height: 1.55; }
+
+  /* FORM MITRA */
+  .form-mitra { background: var(--hijau); padding: 6rem 5%; }
+  .form-mitra .section-title { color: #fff; }
+  .form-mitra .section-label { color: var(--kuning); }
+  .form-mitra .section-sub { color: rgba(255,255,255,0.7); }
+  .form-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; margin-top: 3rem; }
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .form-grid .full { grid-column: 1/-1; }
+  .form-group label { display: block; color: rgba(255,255,255,0.8); font-size: 0.8rem; font-weight: 500; margin-bottom: 6px; }
+  .form-group input, .form-group select, .form-group textarea {
+    width: 100%; padding: 0.75rem 1rem; border-radius: 6px;
+    border: 1.5px solid rgba(255,255,255,0.25); background: rgba(255,255,255,0.1);
+    color: #fff; font-family: 'DM Sans', sans-serif; font-size: 0.9rem;
+    transition: border-color 0.2s; outline: none;
+  }
+  .form-group input::placeholder, .form-group textarea::placeholder { color: rgba(255,255,255,0.4); }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--kuning); }
+  .form-group select option { background: var(--hijau); }
+  .btn-submit { width: 100%; padding: 0.9rem; background: var(--kuning); color: var(--gelap); border: none; border-radius: 6px; font-weight: 700; font-size: 1rem; cursor: pointer; font-family: 'DM Sans', sans-serif; transition: opacity 0.2s; margin-top: 0.5rem; }
+  .btn-submit:hover { opacity: 0.88; }
+  .benefits-list { list-style: none; }
+  .benefits-list li { display: flex; align-items: flex-start; gap: 12px; color: rgba(255,255,255,0.85); font-size: 0.95rem; padding: 0.85rem 0; border-bottom: 1px solid rgba(255,255,255,0.1); line-height: 1.5; }
+  .benefits-list li:last-child { border-bottom: none; }
+  .benefits-list .ck { width: 22px; height: 22px; border-radius: 50%; background: rgba(92,184,92,0.3); border: 1.5px solid var(--hijau-muda); color: var(--hijau-muda); display: flex; align-items: center; justify-content: center; font-size: 0.8rem; flex-shrink: 0; margin-top: 1px; }
+
+  /* KONTAK */
+  .kontak { background: var(--krem); }
+  .kontak-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
+  .kontak-card { background: #fff; border-radius: 10px; padding: 2rem 1.5rem; text-align: center; border: 1px solid #e8e8e8; }
+  .kontak-icon { font-size: 2rem; margin-bottom: 1rem; }
+  .kontak-card h4 { font-weight: 600; font-size: 0.95rem; margin-bottom: 0.5rem; }
+  .kontak-card a, .kontak-card p { color: var(--hijau-mid); font-size: 0.9rem; text-decoration: none; }
+
+  /* FOOTER */
+  footer { background: var(--gelap); color: rgba(255,255,255,0.6); padding: 3rem 5%; font-size: 0.85rem; text-align: center; }
+  footer strong { color: #fff; }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* TOAST */
+  .toast { position: fixed; bottom: 2rem; right: 2rem; background: var(--hijau); color: #fff; padding: 1rem 1.5rem; border-radius: 8px; font-size: 0.9rem; z-index: 999; transform: translateY(100px); opacity: 0; transition: all 0.3s; }
+  .toast.show { transform: translateY(0); opacity: 1; }
+
+  @media (max-width: 768px) {
+    .hero-stats { display: none; }
+    .form-wrap { grid-template-columns: 1fr; gap: 2rem; }
+    .form-grid { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+    .mitra-steps::before { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">Agri<span>Bumi</span></a>
+  <ul class="nav-links">
+    <li><a href="#layanan">Layanan</a></li>
+    <li><a href="#produk">Produk</a></li>
+    <li><a href="#mitra">Jadi Mitra</a></li>
+    <li><a href="#kontak">Kontak</a></li>
+  </ul>
+  <a class="nav-cta" href="#mitra">Daftar Petani Mitra</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-content">
+    <div class="hero-badge">&#127807; CV Agribisnis Pertanian Profesional</div>
+    <h1>Tani Lebih Cerdas,<br>Hasil Lebih <em>Berlimpah</em></h1>
+    <p class="hero-sub">Kami menghubungkan petani lokal dengan pasar yang lebih luas, menyediakan sarana produksi berkualitas, dan mendampingi dari tanam hingga panen.</p>
+    <div class="hero-buttons">
+      <a href="#mitra" class="btn-primary">Bergabung Sebagai Mitra</a>
+      <a href="#produk" class="btn-outline">Lihat Produk Kami</a>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="stat-box">
+      <div class="stat-num">50+</div>
+      <div class="stat-lbl">Petani Mitra Aktif</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num">12</div>
+      <div class="stat-lbl">Komoditas Unggulan</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num">5+</div>
+      <div class="stat-lbl">Kabupaten Jangkauan</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num">100%</div>
+      <div class="stat-lbl">Panen Terbeli</div>
+    </div>
+  </div>
+</section>
+
+<!-- LAYANAN -->
+<section class="layanan" id="layanan">
+  <div class="section-label">Apa yang Kami Lakukan</div>
+  <h2 class="section-title">Layanan Agribisnis<br>Lengkap & Terpadu</h2>
+  <p class="section-sub">Dari penyediaan sarana produksi hingga pemasaran hasil panen, kami hadir di setiap tahap perjalanan bertani Anda.</p>
+  <div class="layanan-grid">
+    <div class="layanan-card">
+      <div class="layanan-icon">&#127807;</div>
+      <h3>Sarana Produksi</h3>
+      <p>Benih unggul, pupuk berkualitas, pestisida aman, dan alat pertanian tersedia dengan harga preferensial khusus mitra.</p>
+    </div>
+    <div class="layanan-card">
+      <div class="layanan-icon">&#128200;</div>
+      <h3>Hasil Panen</h3>
+      <p>Kami beli langsung hasil panen Anda — jagung, padi, kopi, edamame, vanili, rempah, sayur — dengan harga kesepakatan yang pasti.</p>
+    </div>
+    <div class="layanan-card">
+      <div class="layanan-icon">&#128104;&#8205;&#127806;</div>
+      <h3>Pendampingan Teknis</h3>
+      <p>Koordinator lapangan kami mendampingi dari olah lahan, penanaman, hingga panen. Petani tidak sendirian.</p>
+    </div>
+    <div class="layanan-card">
+      <div class="layanan-icon">&#127891;</div>
+      <h3>Pelatihan & Workshop</h3>
+      <p>Program edukasi pertanian modern, good agricultural practice (GAP), dan pengelolaan hasil panen pasca panen.</p>
+    </div>
+    <div class="layanan-card">
+      <div class="layanan-icon">&#128203;</div>
+      <h3>Kontrak Pertanian</h3>
+      <p>Jaminan harga dan pasar dengan kontrak resmi. Petani tenang bertanam karena kepastian penjualan sudah ada.</p>
+    </div>
+    <div class="layanan-card">
+      <div class="layanan-icon">&#127959;</div>
+      <h3>Event Organizer Tani</h3>
+      <p>Penyuluhan dinas, launching produk baru, demo lapangan, dan event agribisnis untuk instansi maupun swasta.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUK -->
+<section class="produk" id="produk">
+  <div class="produk-header">
+    <div>
+      <div class="section-label">Katalog</div>
+      <h2 class="section-title">Produk & Hasil Panen</h2>
+    </div>
+    <div class="produk-tabs">
+      <button class="tab-btn active" onclick="filterProduk('semua', this)">Semua</button>
+      <button class="tab-btn" onclick="filterProduk('panen', this)">Hasil Panen</button>
+      <button class="tab-btn" onclick="filterProduk('sarana', this)">Sarana Tani</button>
+      <button class="tab-btn" onclick="filterProduk('alat', this)">Alat Pertanian</button>
+    </div>
+  </div>
+  <div class="produk-grid" id="produkGrid">
+    <!-- Hasil Panen -->
+    <div class="produk-card" data-cat="panen">
+      <div class="produk-img" style="background:#FFF9E6;">&#127806;</div>
+      <div class="produk-body">
+        <div class="produk-category">Hasil Panen</div>
+        <div class="produk-name">Jagung Pipil Kering</div>
+        <div class="produk-price">Rp 4.500 <span class="produk-unit">/ kg</span></div>
+        <button class="produk-btn" onclick="pesan('Jagung Pipil Kering')">Pesan / Hubungi</button>
+      </div>
+    </div>
+    <div class="produk-card" data-cat="panen">
+      <div class="produk-img" style="background:#FFF3E0;">&#127823;</div>
+      <div class="produk-body">
+        <div class="produk-category">Hasil Panen</div>
+        <div class="produk-name">Padi / Gabah Kering</div>
+        <div class="produk-price">Rp 5.200 <span class="produk-unit">/ kg</span></div>
+        <button class="produk-btn" onclick="pesan('Padi / Gabah Kering')">Pesan / Hubungi</button>
+      </div>
+    </div>
+    <div class="produk-card" data-cat="panen">
+      <div class="produk-img" style="background:#F0F4E8;">&#129361;</div>
+      <div class="produk-body">
+        <div class="produk-category">Hasil Panen</div>
+        <div class="produk-name">Edamame Segar</div>
+        <div class="produk-price">Rp 18.000 <span class="produk-unit">/ kg</span></div>
+        <button class="produk-btn" onclick="pesan('Edamame Segar')">Pesan / Hubungi</button>
+      </div>
+    </div>
+    <div class="produk-card" data-cat="panen">
+      <div class="produk-img" style="background:#F3EBE0;">&#9749;</div>
+      <div class="produk-body">
+        <div class="produk-category">Hasil Panen</div>
+        <div class="produk-name">Kopi Arabika / Robusta</div>
+        <div class="produk-price">Rp 45.000 <span class="produk-unit">/ kg</span></div>
+        <button class="produk-btn" onclick="pesan('Kopi')">Pesan / Hubungi</button>
+      </div>
+    </div>
+    <div class="produk-card" data-cat="panen">
+      <div class="produk-img" style="background:#F0FAF0;">&#129382;</div>
+      <div class="produk-body">
+        <div class="produk-category">Hasil Panen</div>
+        <div class="produk-name">Alpukat Mentega</div>
+        <div class="produk-price">Rp 12.000 <span class="produk-unit">/ kg</span></div>
+        <button class="produk-btn" onclick="pesan('Alpukat')">Pesan / Hubungi</button>
+      </div>
+    </div>
+    <div class="produk-card" data-cat="panen">
+      <div class="produk-img" style="background:#FCF5E5;">&#127811;</div>
+      <div class="produk-body">
+        <div class="produk-category">Hasil Panen</div>
+        <div class="produk-name">Vanili Basah / Kering</div>
+        <div class="produk-price">Rp 350.000 <span class="produk-unit">/ kg</span></div>
+        <button class="produk-btn" onclick="pesan('Vanili')">Pesan / Hubungi</button>
+      </div>
+    </div>
+    <!-- Sarana -->
+    <div class="produk-card" data-cat="sarana">
+      <div class="produk-img" style="background:#EAFAF0;">&#127807;</div>
+      <div class="produk-body">
+        <div class="produk-category">Sarana Produksi</div>
+        <div class="produk-name">Benih Jagung Hibrida</div>
+        <div class="produk-price">Rp 85.000 <span class="produk-unit">/ sachet 1 kg</span></div>
+        <button class="produk-btn" onclick="pesan('Benih Jagung')">Pesan / Hubungi</button>
+      </div>
+    </div>
+    <div class="produk-card" data-cat="sarana">
+      <div class="produk-img" style="background:#FFF8E1;">&#128738;</div>
+      <div class="produk-body">
+        <div class="produk-category">Sarana Produksi</div>
+        <div class="produk-name">Pupuk NPK Phonska</div>
+        <div class="produk-price">Rp 310.000 <span class="produk-unit">/ 50 kg</span></div>
+        <button class="produk-btn" onclick="pesan('Pupuk NPK')">Pesan / Hubungi</button>
+      </div>
+    </div>
+    <div class="produk-card" data-cat="sarana">
+      <div class="produk-img" style="background:#FEF0F0;">&#128167;</div>
+      <div class="produk-body">
+        <div class="produk-category">Sarana Produksi</div>
+        <div class="produk-name">Pestisida / Herbisida</div>
+        <div class="produk-price">Mulai Rp 35.000 <span class="produk-unit">/ liter</span></div>
+        <button class="produk-btn" onclick="pesan('Pestisida')">Pesan / Hubungi</button>
+      </div>
+    </div>
+    <!-- Alat -->
+    <div class="produk-card" data-cat="alat">
+      <div class="produk-img" style="background:#EEF5FF;">&#128736;</div>
+      <div class="produk-body">
+        <div class="produk-category">Alat Pertanian</div>
+        <div class="produk-name">Sprayer Elektrik 16L</div>
+        <div class="produk-price">Rp 450.000 <span class="produk-unit">/ unit</span></div>
+        <button class="produk-btn" onclick="pesan('Sprayer Elektrik')">Pesan / Hubungi</button>
+      </div>
+    </div>
+    <div class="produk-card" data-cat="alat">
+      <div class="produk-img" style="background:#F5F0FF;">&#9981;</div>
+      <div class="produk-body">
+        <div class="produk-category">Alat Pertanian</div>
+        <div class="produk-name">Cangkul & Garpu Tani</div>
+        <div class="produk-price">Mulai Rp 65.000 <span class="produk-unit">/ unit</span></div>
+        <button class="produk-btn" onclick="pesan('Cangkul / Garpu')">Pesan / Hubungi</button>
+      </div>
+    </div>
+    <div class="produk-card" data-cat="alat">
+      <div class="produk-img" style="background:#F0FFFA;">&#128295;</div>
+      <div class="produk-body">
+        <div class="produk-category">Alat Pertanian</div>
+        <div class="produk-name">Timbangan Digital</div>
+        <div class="produk-price">Rp 285.000 <span class="produk-unit">/ unit</span></div>
+        <button class="produk-btn" onclick="pesan('Timbangan Digital')">Pesan / Hubungi</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROSES MITRA -->
+<section class="mitra" id="mitra">
+  <div style="text-align:center;">
+    <div class="section-label">Proses Bergabung</div>
+    <h2 class="section-title">Menjadi Petani Mitra Kami<br>Sangat Mudah</h2>
+    <p class="section-sub" style="margin: 0 auto;">Ikuti 5 langkah sederhana dan mulai bertani dengan dukungan penuh dari tim kami.</p>
+  </div>
+  <div class="mitra-steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <h4>Daftar Online</h4>
+      <p>Isi formulir pendaftaran di bawah ini atau hubungi tim kami via WhatsApp</p>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <h4>Survei Lahan</h4>
+      <p>Koordinator kami akan kunjungi lahan Anda dan nilai potensinya</p>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <h4>Orientasi & MoU</h4>
+      <p>Penandatanganan perjanjian kerjasama dengan hak dan kewajiban yang jelas</p>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <h4>Dapat Sarana</h4>
+      <p>Akses benih, pupuk, pestisida harga khusus mitra dan pendampingan teknis</p>
+    </div>
+    <div class="step">
+      <div class="step-num">5</div>
+      <h4>Panen & Dibayar</h4>
+      <p>Hasil panen kami beli, pembayaran maksimal 7 hari setelah panen diterima</p>
+    </div>
+  </div>
+</section>
+
+<!-- FORM MITRA -->
+<section class="form-mitra">
+  <div class="form-wrap">
+    <div>
+      <div class="section-label">Daftar Sekarang</div>
+      <h2 class="section-title">Formulir Pendaftaran<br>Petani Mitra</h2>
+      <p class="section-sub" style="margin-bottom: 2rem;">Bergabung dan nikmati kemudahan bertani dengan dukungan penuh dari CV kami.</p>
+      <ul class="benefits-list">
+        <li><span class="ck">&#10003;</span> Kepastian harga beli hasil panen</li>
+        <li><span class="ck">&#10003;</span> Sarana produksi harga mitra (lebih murah)</li>
+        <li><span class="ck">&#10003;</span> Pendampingan teknis tanpa biaya tambahan</li>
+        <li><span class="ck">&#10003;</span> Akses pelatihan & workshop gratis</li>
+        <li><span class="ck">&#10003;</span> Pembayaran tepat waktu, transparan</li>
+        <li><span class="ck">&#10003;</span> Jaringan petani mitra se-wilayah</li>
+      </ul>
+    </div>
+    <div>
+      <div class="form-grid">
+        <div class="form-group">
+          <label>Nama Lengkap *</label>
+          <input type="text" id="f-nama" placeholder="Nama sesuai KTP">
+        </div>
+        <div class="form-group">
+          <label>No. WhatsApp *</label>
+          <input type="tel" id="f-wa" placeholder="08xxxxxxxxxx">
+        </div>
+        <div class="form-group full">
+          <label>Alamat / Desa / Kecamatan *</label>
+          <input type="text" id="f-alamat" placeholder="Desa, Kecamatan, Kabupaten">
+        </div>
+        <div class="form-group">
+          <label>Luas Lahan (Ha)</label>
+          <input type="number" id="f-lahan" placeholder="Contoh: 0.5">
+        </div>
+        <div class="form-group">
+          <label>Status Lahan</label>
+          <select id="f-status">
+            <option value="">-- Pilih --</option>
+            <option>Milik Sendiri</option>
+            <option>Sewa</option>
+            <option>Garapan/Bagi Hasil</option>
+          </select>
+        </div>
+        <div class="form-group full">
+          <label>Komoditas yang Ingin Ditanam</label>
+          <select id="f-komoditas">
+            <option value="">-- Pilih Komoditas --</option>
+            <option>Jagung</option>
+            <option>Padi</option>
+            <option>Edamame</option>
+            <option>Kopi</option>
+            <option>Vanili</option>
+            <option>Alpukat</option>
+            <option>Sayuran</option>
+            <option>Rempah-rempah</option>
+            <option>Lainnya</option>
+          </select>
+        </div>
+        <div class="form-group full">
+          <label>Pengalaman Bertani & Catatan</label>
+          <textarea id="f-catatan" rows="3" placeholder="Ceritakan singkat pengalaman atau pertanyaan Anda..."></textarea>
+        </div>
+        <div class="form-group full">
+          <button class="btn-submit" onclick="kirimForm()">&#128640; Kirim Pendaftaran</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KONTAK -->
+<section class="kontak" id="kontak">
+  <div class="section-label">Hubungi Kami</div>
+  <h2 class="section-title">Ada Pertanyaan?</h2>
+  <p class="section-sub">Tim kami siap membantu Anda setiap hari kerja (Senin–Sabtu, 07.00–17.00 WIB)</p>
+  <div class="kontak-grid">
+    <div class="kontak-card">
+      <div class="kontak-icon">&#128241;</div>
+      <h4>WhatsApp</h4>
+      <a href="https://wa.me/6281234567890">+62 812-3456-7890</a>
+    </div>
+    <div class="kontak-card">
+      <div class="kontak-icon">&#128231;</div>
+      <h4>Email</h4>
+      <a href="mailto:info@agribumi.co.id">info@agribumi.co.id</a>
+    </div>
+    <div class="kontak-card">
+      <div class="kontak-icon">&#128205;</div>
+      <h4>Kantor</h4>
+      <p>Jl. Pertanian No. 1, Kab. Semarang, Jawa Tengah</p>
+    </div>
+    <div class="kontak-card">
+      <div class="kontak-icon">&#128248;</div>
+      <h4>Instagram</h4>
+      <a href="#">@agribumi.nusantara</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p><strong>CV AgriBumi Nusantara</strong> &mdash; Agribisnis Pertanian Profesional</p>
+  <p style="margin-top:0.5rem;">NIB: xxxxxxxxxxxxxxx &nbsp;|&nbsp; NPWP: xx.xxx.xxx.x-xxx.xxx</p>
+  <p style="margin-top:0.5rem; font-size:0.78rem;">&copy; 2025 CV AgriBumi Nusantara. Hak cipta dilindungi.</p>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script>
+function filterProduk(cat, btn) {
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.produk-card').forEach(card => {
+    card.style.display = (cat === 'semua' || card.dataset.cat === cat) ? 'block' : 'none';
+  });
+}
+
+function pesan(nama) {
+  const wa = '6281234567890';
+  const msg = encodeURIComponent('Halo, saya ingin memesan/menanyakan: ' + nama);
+  window.open('https://wa.me/' + wa + '?text=' + msg, '_blank');
+}
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3500);
+}
+
+function kirimForm() {
+  const nama = document.getElementById('f-nama').value.trim();
+  const wa = document.getElementById('f-wa').value.trim();
+  const alamat = document.getElementById('f-alamat').value.trim();
+  if (!nama || !wa || !alamat) { showToast('Mohon isi nama, WhatsApp, dan alamat terlebih dahulu.'); return; }
+  const lahan = document.getElementById('f-lahan').value;
+  const status = document.getElementById('f-status').value;
+  const komoditas = document.getElementById('f-komoditas').value;
+  const catatan = document.getElementById('f-catatan').value;
+  const msg = `*PENDAFTARAN PETANI MITRA*\n\nNama: ${nama}\nWA: ${wa}\nAlamat: ${alamat}\nLuas Lahan: ${lahan} Ha\nStatus Lahan: ${status}\nKomoditas: ${komoditas}\nCatatan: ${catatan}`;
+  window.open('https://wa.me/6281234567890?text=' + encodeURIComponent(msg), '_blank');
+  showToast('Terima kasih! Kami akan menghubungi Anda segera.');
+}
+
+// Scroll nav
+window.addEventListener('scroll', () => {
+  const nav = document.querySelector('nav');
+  nav.style.background = window.scrollY > 40 ? 'rgba(26,92,26,0.98)' : 'rgba(26,92,26,0.96)';
+});
+</script>
+</body>
+</html>
